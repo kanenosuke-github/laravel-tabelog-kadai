@@ -29,7 +29,20 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = new Store();
+        $store->name = $request->input('name');
+        $store->image = $request->input('image');
+        $store->description = $request->input('description');
+        $store->business_hours = $request->input('business_hours');
+        $store->price = $request->input('price');
+        $store->category = $request->input('category');
+        $store->postal_code = $request->input('postal_code');
+        $store->address = $request->input('address');
+        $store->phone_number = $request->input('phone_number');
+        $store->regular_holiday = $request->input('regular_holiday');
+        $store->save();
+
+        return to_route('stores.index');
     }
 
     /**
