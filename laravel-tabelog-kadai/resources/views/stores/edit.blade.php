@@ -46,6 +46,18 @@
         <input type="text" name="regular_holiday" value="{{$store->regular_holiday}}" placeholder="Regular Holiday">
     </div>
     <div>
+         <strong>Category:</strong>
+         <select name="category_id">
+         @foreach ($categories as $category)
+             @if ($category->id == $store->category_id)
+                 <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+             @else
+                 <option value="{{ $category->id }}">{{ $category->name }}</option>
+             @endif
+         @endforeach
+         </select>
+     </div>
+    <div>
         <button type="submit">Submit</button>
     </div>
 

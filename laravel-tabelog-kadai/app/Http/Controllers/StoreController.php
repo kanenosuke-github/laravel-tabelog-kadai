@@ -80,6 +80,7 @@ class StoreController extends Controller
         $store->address = $request->input('address');
         $store->phone_number = $request->input('phone_number');
         $store->regular_holiday = $request->input('regular_holiday');
+        $store->category_id = $request->input('category_id');
         $store->update();
 
         return to_route('stores.index');
