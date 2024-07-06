@@ -27,8 +27,13 @@
         <td>{{$store->phone_number}}</td>
         <td>{{$store->regular_holiday}}</td>
         <td>
-            <a href="{{route('stores.show',$store->id)}}">Show</a>
-            <a href="{{route('stores.edit',$store->id)}}">Edit</a>
+            <form action="{{route('stores.destroy',$store->id)}}" method="POST">
+               <a href="{{route('stores.show',$store->id)}}">Show</a>
+               <a href="{{route('stores.edit',$store->id)}}">Edit</a>
+                @csrf
+                @method('DELETE')
+                <button type="submit">DELETE</button>
+            </form>
         </td>
     </tr>
     @endforeach

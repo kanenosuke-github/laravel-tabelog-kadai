@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
@@ -21,7 +22,9 @@ class StoreController extends Controller
      */
     public function create()
     {
-        return view('stores.create');
+        $categories = Category::all();
+
+        return view('stores.create',compact('categories'));
     }
 
     /**
@@ -39,6 +42,7 @@ class StoreController extends Controller
         $store->address = $request->input('address');
         $store->phone_number = $request->input('phone_number');
         $store->regular_holiday = $request->input('regular_holiday');
+        $store->category_id = $request->input('category_id');
         $store->save();
 
         return to_route('stores.index');
@@ -57,7 +61,9 @@ class StoreController extends Controller
      */
     public function edit(Store $store)
     {
-        return view('stores.edit',compact('store'));
+        $categories = Category::all();
+
+        return view('stores.edit',compact('store','categories'));
     }
 
     /**
@@ -65,7 +71,18 @@ class StoreController extends Controller
      */
     public function update(Request $request, Store $store)
     {
-        //
+        $store->name = $request->input('name');
+        $store->image = $request->input('image');
+        $store->description = $request->input('description');
+        $store->business_hours = $request->input('business_hours');
+        $store->price = $request->input('price');
+        $store->postal_code = $request->input('postal_code');
+        $store->address = $request->input('address');
+        $store->phone_number = $request->input('phone_number');
+        $store->regular_holiday = $request->input('regular_holiday');
+        $store->update();
+
+        return to_route('stores.index');
     }
 
     /**
@@ -73,6 +90,8 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
-        //
+        $store->delete();
+
+        return to_route('stores.index');
     }
 }
