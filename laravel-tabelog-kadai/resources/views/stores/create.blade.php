@@ -29,10 +29,6 @@
         <input type="number" name="price" placeholder="Price">
     </div>
     <div>
-        <strong>Category ID:</strong>
-        <input type="number" name="category_id" placeholder="Category ID">
-    </div>
-    <div>
         <strong>Postal Code:</strong>
         <input type="text" name="postal_code" placeholder="Postal Code">
     </div>

@@ -27,7 +27,9 @@
         <td>{{$store->phone_number}}</td>
         <td>{{$store->regular_holiday}}</td>
         <td>
+            <a href="{{route('stores.show',$store->id)}}">Show</a>
             <a href="{{route('stores.edit',$store->id)}}">Edit</a>
         </td>
     </tr>
+    @endforeach
 </table>

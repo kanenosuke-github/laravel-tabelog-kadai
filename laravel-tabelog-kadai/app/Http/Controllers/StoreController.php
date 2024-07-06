@@ -35,7 +35,6 @@ class StoreController extends Controller
         $store->description = $request->input('description');
         $store->business_hours = $request->input('business_hours');
         $store->price = $request->input('price');
-        $store->category = $request->input('category');
         $store->postal_code = $request->input('postal_code');
         $store->address = $request->input('address');
         $store->phone_number = $request->input('phone_number');
@@ -50,7 +49,7 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        //
+        return view('stores.show',compact('store'));
     }
 
     /**
@@ -58,7 +57,7 @@ class StoreController extends Controller
      */
     public function edit(Store $store)
     {
-        //
+        return view('stores.edit',compact('store'));
     }
 
     /**
