@@ -1,4 +1,4 @@
-<a href="{{route('stores.create')}}">Create New Store</a>
+<a href="{{route('admin.stores.create')}}">Create New Store</a>
 
 <table>
     <tr>
@@ -27,9 +27,9 @@
         <td>{{$store->phone_number}}</td>
         <td>{{$store->regular_holiday}}</td>
         <td>
-            <form action="{{route('stores.destroy',$store->id)}}" method="POST">
-               <a href="{{route('stores.show',$store->id)}}">Show</a>
-               <a href="{{route('stores.edit',$store->id)}}">Edit</a>
+            <form action="{{route('admin.stores.destroy',$store->id)}}" method="POST">
+               <a href="{{route('admin.stores.show',$store->id)}}">Show</a>
+               <a href="{{route('admin.stores.edit',$store->id)}}">Edit</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit">DELETE</button>

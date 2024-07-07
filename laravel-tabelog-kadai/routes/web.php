@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StoreController;
+use App\Http\Controllers\Admin;
+//use App\Http\Controllers\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('stores',StoreController::class);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,3 +33,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {
+    Route::get('home', [Admin\HomeController::class, 'index'])->name('home');
+    Route::resource('stores',Admin\StoreController::class);
+});

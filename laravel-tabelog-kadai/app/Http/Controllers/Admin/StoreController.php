@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Store;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -71,8 +72,9 @@ class StoreController extends Controller
      */
     public function update(Request $request, Store $store)
     {
+        //dd($request);
         $store->name = $request->input('name');
-        $store->image = $request->input('image');
+        //$store->image = $request->input('image');
         $store->description = $request->input('description');
         $store->business_hours = $request->input('business_hours');
         $store->price = $request->input('price');
