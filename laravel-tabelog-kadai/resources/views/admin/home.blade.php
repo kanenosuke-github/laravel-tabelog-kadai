@@ -7,7 +7,7 @@
     <title>admin-login</title>
 </head>
 <body>
-    <a href="{{route('admin.stores')}}">店舗一覧</a>
+    <a href="{{route('admin.stores.index')}}">店舗一覧</a>
     <div class="col container">
         <div class="row justify-content-center">
             <div class="col-xxl-9 col-xl-10 col-lg-11">

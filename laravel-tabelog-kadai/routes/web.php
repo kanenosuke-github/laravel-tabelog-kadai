@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin;
-//use App\Http\Controllers\StoreController;
+use App\Http\Controllers\Admin\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +29,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
     Route::get('home', [Admin\HomeController::class, 'index'])->name('home');
     Route::resource('stores',Admin\StoreController::class);
 });
+
+Route::get('/admin/stores', [StoreController::class, 'index'])->name('admin.stores.index');
+
+
