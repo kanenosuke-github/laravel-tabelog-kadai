@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\StoreController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +24,16 @@ Route::get('/', function () {
 
 
 
-
+// 認証ルート
 require __DIR__.'/auth.php';
 
+// 管理画面のルートグループ
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {
-    Route::get('home', [Admin\HomeController::class, 'index'])->name('home');
-    Route::resource('stores',Admin\StoreController::class);
+    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('members', [MemberController::class, 'index'])->name('members');
+    Route::resource('stores', StoreController::class);
+    Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('about', [HomeController::class, 'about'])->name('about');
+    Route::get('terms', [HomeController::class, 'terms'])->name('terms');
 });
-
-Route::get('/admin/stores', [StoreController::class, 'index'])->name('admin.stores.index');
-
 

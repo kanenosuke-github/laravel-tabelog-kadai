@@ -3,6 +3,9 @@
 @section('content')
     <div class="col container">
         <div class="row justify-content-center">
+            <!-- Sidebar inclusion -->
+            @include('layouts.sidebar')
+
             <div class="col-xxl-9 col-xl-10 col-lg-11">
                 <div class="row row-cols-md-3 row-cols-2 g-3 mb-5">
                     <div class="col">

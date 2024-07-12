@@ -2,7 +2,7 @@
     <div class="container nagoyameshi-container">
         <a class="navbar-brand nagoyameshi-app-name" href="{{ url('/') }}">
             <div class="d-flex align-items-center">
-                <img class="nagoyameshi-logo me-1" src ="{{ asset('/images/logo.svg') }}" alt="nagoyameshi">
+                <img class="nagoyameshi-logo me-1" src ="{{ asset('/images/nagoyameshi-logo.svg') }}" alt="nagoyameshi">
                 NAGOYAMESHI
             </div>
         </a>
@@ -34,7 +34,7 @@
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->name }}▼
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
