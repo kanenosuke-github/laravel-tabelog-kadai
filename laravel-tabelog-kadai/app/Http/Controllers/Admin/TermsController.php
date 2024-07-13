@@ -9,6 +9,6 @@ use App\Models\Term;
 class TermsController extends Controller
 {
     public function index() {
-        return view('admin.terms',['term'=>$term]);
+        return view('admin.terms');
     }
 }
