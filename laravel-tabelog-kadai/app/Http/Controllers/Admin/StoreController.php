@@ -33,9 +33,27 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+        'name' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'description' => 'nullable|string',
+        'business_hours' => 'nullable|string',
+        'price' => 'nullable|numeric',
+        'postal_code' => 'required|string|max:20',
+        'address' => 'required|string|max:255',
+        'phone_number' => 'required|string|max:20',
+        'regular_holiday' => 'nullable|string|max:100',
+        'category_id' => 'required|exists:categories,id',
+    ]);
+
         $store = new Store();
         $store->name = $request->input('name');
-        $store->image = $request->input('image');
+        if($store->hasFile('image')){
+            $image = $store->file('image')->store('public/stores');
+            $store->image = basename($image);
+        }else{
+            $store->image = "";
+        }
         $store->description = $request->input('description');
         $store->business_hours = $request->input('business_hours');
         $store->price = $request->input('price');
@@ -46,7 +64,7 @@ class StoreController extends Controller
         $store->category_id = $request->input('category_id');
         $store->save();
 
-        return to_route('stores.index');
+        return to_route('admin.stores.index');
     }
 
     /**
@@ -72,9 +90,25 @@ class StoreController extends Controller
      */
     public function update(Request $request, Store $store)
     {
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'nullable|string',
+            'business_hours' => 'nullable|string',
+            'price' => 'nullable|numeric',
+            'postal_code' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'regular_holiday' => 'nullable|string|max:100',
+            'category_id' => 'required|exists:categories,id',
+        ]);
         //dd($request);
         $store->name = $request->input('name');
-        //$store->image = $request->input('image');
+        if($store->hasFile('image')){
+            $image = $store->file('image')->store('public/stores');
+            $store->image = basename($image);
+        }
         $store->description = $request->input('description');
         $store->business_hours = $request->input('business_hours');
         $store->price = $request->input('price');
