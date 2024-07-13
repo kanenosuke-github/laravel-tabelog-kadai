@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\TermsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +31,11 @@ require __DIR__.'/auth.php';
 
 // 管理画面のルートグループ
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {
-    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('members', [MemberController::class, 'index'])->name('members');
     Route::resource('stores', StoreController::class);
     Route::get('category', [CategoryController::class, 'index'])->name('category.index');
-    Route::get('about', [HomeController::class, 'about'])->name('about');
-    Route::get('terms', [HomeController::class, 'terms'])->name('terms');
+    Route::get('about', [AboutController::class, 'index'])->name('about');
+    Route::get('terms', [TermsController::class, 'index'])->name('terms');
 });
 
